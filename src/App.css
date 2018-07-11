@@ -1,0 +1,8 @@
+tfoot {
+  font-weight: bold;
+  border-top: thick double black;
+}
+
+table {
+  border-collapse: collapse;
+ }
