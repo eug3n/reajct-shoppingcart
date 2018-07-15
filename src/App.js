@@ -5,21 +5,6 @@ import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      cartProducts: []
-    };
-
-    this.updateCart = this.updateCart.bind(this);
-  }
-  
-  updateCart(product) {
-    let products = this.state.cartProducts;
-    products.push(product);
-    this.setState({ cartProducts: products});
-  }
 
   render() {
     return (
@@ -27,10 +12,10 @@ class App extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs="9">
-              <ProductList updateCart={this.updateCart}/>
+              <ProductList />
             </Col>
             <Col xs="3">
-              <Cart products={this.state.cartProducts} handler={this.updateCart} />
+              <Cart />
             </Col>
         </Row>
         </Container>

@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import { CardColumns, Card, CardText, CardBody,
   CardTitle, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import { updateCart } from '../actions/index';
+
+const mapStateToProps = state => {
+    return { products: state.products };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+      updateCart: product => dispatch(updateCart(product))
+    };
+};
 
 class ProductList extends Component {
 
@@ -38,4 +50,4 @@ class ProductList extends Component {
     }
 }
 
-export default ProductList;
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+  return { products: state.products };
+}
 
 class Cart extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: []
-    };
-  }
-
-  getSessionData(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
-    return JSON.parse(localStorage.getItem(key));
-  }
-
   renderProducts() {
     return this.props.products.map((product) => (
-        <tr>
+        <tr key={product.name}>
           <td>{product.name}</td>
           <td>${product.price}</td>
         </tr>
@@ -55,4 +48,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default connect(mapStateToProps)(Cart);
